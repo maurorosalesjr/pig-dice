@@ -13,3 +13,12 @@ Describe: dice(), roll dice
 Test: "it should create a random number between 1 through 6
 code: on button click
 expected outcome:1, 2, 3, 4, 5, or 6
+
+describe: players
+test: "create player function"
+code:  
+  function player(name, totalScore) {
+    this.name = name;
+    this.totalScore = totalScore;
+  }
+expected output: Player1 (score)
