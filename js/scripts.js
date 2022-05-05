@@ -1,42 +1,107 @@
-//let diceRoll = function () {
-//return Math.floor(Math.random() * 6 + 1)
-//}
+function Player(id) {
+  this.tempScore = 0;
+  this.Score = 0;
+  this.id = id;
+}
 
-
-function diceRoll(max){
-  return Math.floor(Math.random()*max);}
-
-  console.log(diceRoll(6));
-
-  function player(name, totalScore) {
-    this.name = name;
-    this.totalScore = totalScore;
+Player.prototype.roll = function() {
+  let diceRoll = Math.floor((Math.random()*6) + 1);
+  if (diceRoll === 1) {
+    this.tempScore = 0;
+  } else {
+    this.tempScore += diceRoll;
   }
+  return [diceRoll, this.tempScore];
+}
 
-  Dice.prototype.assignId = function () {
-    this.playerId += 1;
-    return this.playerId 
-  };
+Player.prototype.hold = function() {
+  this.Score += this.tempScore;
+  this.tempScore = 0;
+  return this.Score;
+}
+
+Player.prototype.diceShow = function() {
+
+}
+
+
+let player1 = new Player(1);
+let player2 = new Player(2);
+
+$(document).ready(function () {
   
 
-  let player1 = "";
-  let player2 = "";
-  let tempScore = [];
-  let turnScore = 0;
-  this.roll = roll;
-  this.tempScore = tempScore;
 
-
-  onclick(function(){
-    turnScore = diceRoll();
-    if(roll === 1){
-      turnScore = 0;
-    }else {
-      tempScore += turnScore;
+  $("#player1DiceRoll").click(function (event) {
+    let diceRoll1 = player1.roll();
+    $("#diceRoll1").text(diceRoll1[0]);
+    $("#tempScore1").text(diceRoll1[1]);
+    $(".switchDie").attr();
+    if (diceRoll1[0] === 1) {
+      $("#player1DiceRoll").hide();
+      $("#player1Hold").hide();
+      $("#player2Hold").show();
+      $("#player2DiceRoll").show();
     }
+  });
+
+  $("#player2DiceRoll").click(function (event) {
+    let diceRoll2 = player2.roll();
+    $("#diceRoll2").text(diceRoll2[0]);
+    $("#tempScore2").text(diceRoll2[1]);
+    if (diceRoll2[0] === 1) {
+      $("#player2DiceRoll").hide();
+      $("#player2Hold").hide();
+      $("#player1Hold").show();
+      $("#player1DiceRoll").show();
+    }
+  });
+
+  $("#player1Hold").click(function (event) {
+    $("#Score1").text(player1.hold());
+    $("#diceRoll1").text("");
+    $("#tempScore1").text("");
+    $("#player1DiceRoll").hide();
+    $("#player1Hold").hide();
+    $("#player2Hold").show();
+    $("#player2DiceRoll").show();
+    if (player1.Score >= 30) {
+      $("#result1").append("WINNER");
+      $("#result2").append("LOSER");
+    }
+  });
+
+  $("#player2Hold").click(function (event) {
+    $("#Score2").text(player2.hold());
+    $("#diceRoll2").text("");
+    $("#tempScore2").text("");
+    $("#player2DiceRoll").hide();
+    $("#player2Hold").hide();
+    $("#player1Hold").show();
+    $("#player1DiceRoll").show();
+    if (player2.Score >= 30) {
+      $("#result2").append("WINNER");
+      $("#result1").append("LOSER");
+    }
+  });
+  
+  $(".switchDie").click(function (event) {
+    let diceRoll1 = player1.roll();
+    let diceRoll2 = player2.roll();
+
+    if (diceRoll1 || diceRoll2 === 1) {
+      $("#one").attr("src", "img/reddie1.jpeg");
+    } else if (diceRoll1 || diceRoll2 === 2){
+      $("#two").attr("src", "img/grdie2.jpeg");
+    } else if (diceRoll1 || diceRoll2 === 3) {
+      $("#three").attr("src", "img/grdie3.jpeg");
+    } else if (diceRoll1 || diceRoll2 === 4) {
+      $("#four").attr("src", "img/grdie4.jpeg")
+    } else if (diceRoll1 || diceRoll2 === 5) {
+      $("#five").attr("src", "img/grdie5.jpeg") 
+    } else {$("#six").attr("src", "img/grdie6.jpeg")}
+    
   })
-
-  player.prototype.presentScore = function() {
-    return this.name + " has " + this.totalScore + " points!";
-  };
-
+    
+  
+});

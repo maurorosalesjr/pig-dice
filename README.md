@@ -1,5 +1,7 @@
 stuff we will need:
 1-6 random number generator
+player name field
+output area with player name and score
 those numbers get pushed into an array until player "holds" or rolls a 1 (turn array)
 after player holds, those points are added to main score. unless 1 is rolled then nothing is stored into main score (score array x 2)
 first to 100 points wins

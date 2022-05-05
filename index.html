@@ -1,19 +1,56 @@
 <!DOCTYPE html>
 <html lang="en-US">
+
 <head>
-  <link href="css/bootstrap.css" rel="stylesheet" type="text/css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
   <link href="css/styles.css" rel="stylesheet" type="text/css">
   <script src="js/jquery-3.6.0.js"></script>
-  <script src="js/scripts.js"></script>
-  <title>Dice Game!</title>
+  <script src="js/scripts.js"></script> 
+  <title>Pig Dice</title>
 </head>
 <body>
-  <h1>Pig Dice!!!!</h1>
-    <p>the first player to 100 points wins the game!</p>
-    <button type = "click" id = "diceRoll">Pig Dice Game</button>
+  <header class="switchDie" roll="banner">
+    <img id="one" src="img/die1.jpeg" height="100px" width="100px" alt="picture of a die face">
+    <img src="img/die2.jpeg" id="two" height="100px" width="100px" alt="picture of a die face">
+    <img src="img/die3.jpeg" id="three" height="100px" width="100px" alt="picture of a die face">
+    <img src="img/dice.gif" height="100px" width="100px" alt="gif of rolling die">
+    <img src="img/die4.jpeg" id="four" height="100px" width="100px" alt="picture of a die face">
+    <img src="img/die5.jpeg" id="five" height="100px" width="100px" alt="picture of a die face">
+    <img src="img/die6.jpeg" id="six" height="100px" width="100px" alt="picture of a die face">
+  </header>
+  <div id="container">
+    <h1>Pig Dice!!!!</h1>
+    <div class="row"> 
+      <div class="col-6"id="p1">
+        <h2>Player 1</h2>
+        <div id="turn1">  
+          <h3>Total Score: <span id="Score1"></span></h3>
+          <button type="click" id="player1DiceRoll">Roll</button>
+          <button type="click" id="player1Hold">Hold</button>
+          <br>
+          <h4>Dice Roll: <span id="diceRoll1"></span></h4>
+          <h3>Current Score: <span id="tempScore1"></span></h3>
+          <div id="result1"></div> 
+        </div>
+      </div> 
+
+      <div class="col-6"id="p2">
+        <h2>Player 2</h2>
+        <div id="turn2"> 
+          <h3>Total Score: <span id="Score2"></span></h3> 
+          <button type="click" id="player2DiceRoll">Roll</button>
+          <button type="click" id="player2Hold">Hold</button>
+          <br>
+          <h4>Dice Roll: <span id="diceRoll2"></span></h4>
+          <h3>Current Score: <span id="tempScore2"></span></h3>
+          <div id="result2"></div>
+          </div>  
+        </div> 
+      </div>  
+    </div>  
+  </body>
+  </html>
+  
 
 
 
-
-</body>
-</html>
